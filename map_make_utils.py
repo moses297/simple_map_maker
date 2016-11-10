@@ -2,6 +2,7 @@
 class RoomData(object):
     items = ["Book", "Sword", "Fireplace", "Door"]
     floor = ["Stone", "Poo", "Pee", "Blood"]
+    #Needs more poop
 
 
 class RoomGenerator(object):
@@ -16,4 +17,4 @@ class RoomGenerator(object):
 
     def randomize_room_objects(self):
         for obj in RoomData.items:
-            print obj
+            print (obj)
