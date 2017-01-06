@@ -1,18 +1,26 @@
 import map_make_utils
+import random
 import pygame
 from pygame.locals import QUIT
+from utils.graphics import FloorGraphics
 
-textures = {
-    'FLOOR': pygame.image.load("./artifacts/FloorTile1.png"),
-    'STONE': pygame.image.load("./artifacts/Stone1.png")
-}
+WIDTH = 10
+HEIGHT = 10
 
-roomGenerator = map_make_utils.RoomGenerator(10, 10)
-
-room = roomGenerator.randomize_room_objects()
+room_generator = map_make_utils.RoomGenerator(WIDTH, HEIGHT)
+for i in range(random.randint(1, 7)):
+    room_generator.randomize_room_objects()
+room = room_generator.room
 
 pygame.init()
-display = pygame.display.set_mode((10 * 32, 10 * 32))
+display = pygame.display.set_mode((WIDTH * 32, HEIGHT * 32))
+
+
+def draw_board_to_screen(pygame_display, board):
+    for col in range(HEIGHT):
+        for row in range(WIDTH):
+            if board[col][row]:
+                pygame_display.blit(FloorGraphics.textures[board[col][row]], (row * 32, col * 32))
 
 while True:
     for event in pygame.event.get():
@@ -20,7 +28,7 @@ while True:
             pygame.quit()
             exit(1)
 
-    for row in range(10):
-        for col in range(10):
-            display.blit(textures[room[row][col]], (row*32, col*32))
+    draw_board_to_screen(display, room.background)
+    draw_board_to_screen(display, room.board)
+
     pygame.display.update()
