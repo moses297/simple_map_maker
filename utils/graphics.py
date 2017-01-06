@@ -12,7 +12,7 @@ def load_artifact(artifact):
 class FloorGraphics(object):
     textures = ['' for i in xrange(FloorArtifacts.NUM_OF_ARTIFACTS + 1)]
     textures[FloorArtifacts.BLOOD] = load_artifact("Blood1.png")
-    textures[FloorArtifacts.PEE] = load_artifact("Pee1.png")
+    textures[FloorArtifacts.PEE] = load_artifact("Pee2.png")
     textures[FloorArtifacts.POO] = load_artifact("Poo1.png")
     textures[FloorArtifacts.STONE] = load_artifact("Stone1.png")
     textures[FloorArtifacts.TILES] = load_artifact("FloorTile1.png")
